@@ -19,8 +19,8 @@ public class sortierer {
             @Override
             public void actionPerformed(ActionEvent e) {
                 for (int i = 10; i >0; i--) {
-                    //unsortiert.append((int) (Math.random() * 10));
-                    unsortiert.append( i);
+                    unsortiert.append((int) (Math.random() * 10));
+
                 }
                 unsortiert.toFirst();
                 while (unsortiert.hasAccess()) {
@@ -46,7 +46,7 @@ public class sortierer {
 
                         while (unsortiert.hasAccess()) {
                             unsortiert.next();
-                            if (unsortiert.hasAccess() && unsortiert.getContent() < lokalezeit) {
+                            if (unsortiert.hasAccess() && unsortiert.getContent() <= lokalezeit) {
                                 lokalezeit = unsortiert.getContent();
 
 
@@ -55,10 +55,12 @@ public class sortierer {
                         }
                         sortiert.append(lokalezeit);
                         unsortiert.toFirst();
+                        boolean schongelöscht=false;
                         while (unsortiert.hasAccess()) {
 
-                            if (unsortiert.hasAccess() && unsortiert.getContent() == lokalezeit) {
+                            if (unsortiert.hasAccess()&& schongelöscht==false && unsortiert.getContent() == lokalezeit) {
                                 unsortiert.remove();
+                                schongelöscht=true;
                             }
                             unsortiert.next();
                         }
@@ -92,6 +94,7 @@ public class sortierer {
 
                         if(sortiert.isEmpty()){
                             sortiert.append(lokalezeit1);
+                            isteingefuegt=true;
                         }
                         if (!sortiert.isEmpty()) {
                             sortiert.toFirst();
@@ -102,6 +105,10 @@ public class sortierer {
 
                                 }
                                 sortiert.next();
+
+                            }
+                            if (!sortiert.hasAccess() && isteingefuegt==false){
+                                sortiert.append(lokalezeit1);
 
                             }
 
