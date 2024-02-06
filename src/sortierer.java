@@ -104,7 +104,7 @@ public class sortierer {
                                 sortiert.next();
 
                             }
-                            sortiert.append(lokalezeit1);
+
 
                         }
 
