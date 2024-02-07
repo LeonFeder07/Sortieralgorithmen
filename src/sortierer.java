@@ -153,7 +153,7 @@ public class sortierer {
             }
         });
     }
-
+//2hoch n -1 Züge für den Turm
     public static void main(String[] args) {
         JFrame frame = new JFrame("sortierer");
         frame.setContentPane(new sortierer().wda);
