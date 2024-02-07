@@ -9,8 +9,10 @@ public class sortierer {
     private JLabel wdawd;
     private JPanel wda;
     private JButton insertionSortierenButton;
+    private JButton bubbleSortierenButton;
     List<Integer> sortiert;
     List<Integer> unsortiert;
+    int[] zahlen;
 
     public sortierer() {
         sortiert = new List<Integer>();
@@ -130,6 +132,24 @@ public class sortierer {
                     System.out.println(unsortiert.getContent());
                     unsortiert.next();
                 }
+            }
+        });
+        bubbleSortierenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int zahlausgabe=0;
+                int k= 0;
+               for(int i=0;i<10;i++){
+                   zahlen[i]=((int)Math.random()*10);
+               }
+               for(int j=0;j< zahlen.length;j++){
+                  zahlausgabe=zahlen[j];
+                   System.out.println(zahlausgabe);
+               }
+               for(int o=0;o<zahlen.length;){
+
+
+               }
             }
         });
     }
