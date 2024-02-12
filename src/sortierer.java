@@ -139,17 +139,44 @@ public class sortierer {
             public void actionPerformed(ActionEvent e) {
                 int zahlausgabe=0;
                 int k= 0;
-               for(int i=0;i<10;i++){
+                int[] zahlen = new int[10];
+                zahlen[0]=2;
+               for(int i=0;i<zahlen.length;i++){
                    zahlen[i]=((int)Math.random()*10);
                }
+                zahlen[0]=2;
+                zahlen[1]=1;
+                zahlen[2]=11;
+                zahlen[3]=9;
+                zahlen[4]=5;
+                zahlen[5]=8;
+                zahlen[6]=4;
+                zahlen[7]=7;
+                zahlen[8]=3;
+                zahlen[9]=21;
+
                for(int j=0;j< zahlen.length;j++){
-                  zahlausgabe=zahlen[j];
-                   System.out.println(zahlausgabe);
-               }
-               for(int o=0;o<zahlen.length;){
 
-
+                   System.out.println(zahlen[j]);
                }
+                int lokale;
+                for(int i=1; i<zahlen.length; i++) {
+                    for(int j=0; j<zahlen.length-i; j++) {
+                        if(zahlen[j]>zahlen[j+1]) {
+                            lokale=zahlen[j];
+                            zahlen[j]=zahlen[j+1];
+                            zahlen[j+1]=lokale;
+                        }
+
+                    }
+                }
+                System.out.println("");
+                System.out.println("");
+                for(int j=0;j< zahlen.length;j++){
+
+                    System.out.println(zahlen[j]);
+                }
+
             }
         });
     }
