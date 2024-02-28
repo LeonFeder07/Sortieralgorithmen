@@ -10,6 +10,7 @@ public class sortierer {
     private JPanel wda;
     private JButton insertionSortierenButton;
     private JButton bubbleSortierenButton;
+    private JButton quickSortierenButton;
     List<Integer> sortiert;
     List<Integer> unsortiert;
     int[] zahlen;
@@ -179,7 +180,80 @@ public class sortierer {
 
             }
         });
+
+        quickSortierenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int[] zahlen = new int[10];
+                zahlen[0]=2;
+                zahlen[1]=1;
+                zahlen[2]=11;
+                zahlen[3]=9;
+                zahlen[4]=5;
+                zahlen[5]=8;
+                zahlen[6]=4;
+                zahlen[7]=7;
+                zahlen[8]=3;
+                zahlen[9]=21;
+                System.out.println("---------Vorher----------");
+                for(int j=0;j< zahlen.length;j++){
+
+                    System.out.println(zahlen[j]);
+                }
+                System.out.println("---------Nachher----------");
+                quickSort(zahlen);
+                for(int j=0;j< zahlen.length;j++){
+
+                    System.out.println(zahlen[j]);
+                }
+            }
+        });
     }
+    public static void quickSort(int[] array) {
+        rekursivQuickSort(array, 0, array.length - 1);
+    }
+    public static void rekursivQuickSort(int[] array, int startIdx,
+                                          int endIdx) {
+
+        int idx = partition(array, startIdx, endIdx);
+
+        if (startIdx < idx - 1) {
+            rekursivQuickSort(array, startIdx, idx - 1);
+        }
+
+
+        if (endIdx > idx) {
+            rekursivQuickSort(array, idx, endIdx);
+        }
+    }
+
+    public static int partition(int[] array, int links, int rechts) {
+        int pivot = array[links];
+
+        while (links <= rechts) {
+
+            while (array[links] < pivot) {
+                links++;
+            }
+            //searching number which is less than pivot, top down
+            while (array[rechts] > pivot) {
+                rechts--;
+            }
+
+            // swap the values
+            if (links <= rechts) {
+                int tmp = array[links];
+                array[links] = array[rechts];
+                array[rechts] = tmp;
+
+                //increment left index and decrement right index
+                links++;
+                rechts--;
+            }
+        }
+        return links;
+    }
+
 //2hoch n -1 Züge für den Turm
     public static void main(String[] args) {
         JFrame frame = new JFrame("sortierer");
